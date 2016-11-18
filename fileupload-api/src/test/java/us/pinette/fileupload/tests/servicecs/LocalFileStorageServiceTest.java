@@ -1,6 +1,5 @@
-package us.pinette.fileupload.api.servicecs;
+package us.pinette.fileupload.tests.servicecs;
 
-import org.assertj.core.util.Strings;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.ArgumentCaptor;
@@ -12,7 +11,7 @@ import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import org.springframework.mock.env.MockPropertySource;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import us.pinette.fileupload.api.TestUtils;
+import us.pinette.fileupload.tests.TestUtils;
 
 import us.pinette.fileupload.api.entities.FileMetaData;
 import us.pinette.fileupload.api.models.FileMetaDataModel;

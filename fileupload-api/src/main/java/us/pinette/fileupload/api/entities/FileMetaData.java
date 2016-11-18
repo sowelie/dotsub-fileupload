@@ -1,11 +1,13 @@
 package us.pinette.fileupload.api.entities;
 
+import javax.persistence.Entity;
 import java.time.Instant;
 
 /**
  * An entity which can be used to store information about an uploaded file in a database.
  */
-public class FileMetaData {
+@Entity
+public class FileMetaData extends BaseEntity {
     private String title = "";
     private String description = "";
     private String contentType = "";

@@ -2,6 +2,7 @@ package us.pinette.fileupload.api.services.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.transaction.annotation.Transactional;
 import us.pinette.fileupload.api.entities.FileMetaData;
 import us.pinette.fileupload.api.exceptions.FileStorageException;
 import us.pinette.fileupload.api.models.FileMetaDataModel;
@@ -24,6 +25,7 @@ public class LocalFileStorageService implements FileStorageService {
     private String storageDirectory = "";
 
     @Override
+    @Transactional
     public FileMetaData addFile(final FileMetaDataModel model, final String extension, final InputStream input) throws FileStorageException {
         try {
             // remove any special characters, replace spaces with underscores

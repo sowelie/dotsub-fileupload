@@ -1,4 +1,4 @@
-package us.pinette.fileupload.api;
+package us.pinette.fileupload.tests;
 
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import org.springframework.core.env.MutablePropertySources;

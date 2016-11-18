@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.StringUtils;
 import us.pinette.fileupload.api.entities.FileMetaData;
 import us.pinette.fileupload.api.exceptions.FileStorageException;
 import us.pinette.fileupload.api.models.FileMetaDataModel;
@@ -26,12 +27,17 @@ public class LocalFileStorageService implements FileStorageService {
     @Autowired
     private FileMetaDataRepository metaDataRepository = null;
 
-    @Value("${fileupload.storageDirectory}")
+    @Value("${fileupload.storageDirectory:}")
     private String storageDirectory = "";
 
     @Override
     @Transactional
     public FileMetaData addFile(final FileMetaDataModel model, final String extension, final InputStream input) throws FileStorageException {
+        // if no directory is provided, use the temp directory
+        if (StringUtils.isEmpty(storageDirectory)) {
+            storageDirectory = System.getProperty("java.io.tmpdir");
+        }
+
         try {
             // remove any special characters, replace spaces with underscores
             String fileName = cleanFileName(model.getTitle());

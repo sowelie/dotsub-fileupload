@@ -1,13 +1,14 @@
 package us.pinette.fileupload.tests.repositories;
 
 import org.hibernate.SessionFactory;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
 import us.pinette.fileupload.api.entities.FileMetaData;
 import us.pinette.fileupload.api.repositories.impl.DefaultFileMetaDataRepository;
@@ -24,7 +25,7 @@ import static org.junit.Assert.*;
         DefaultFileMetaDataRepositoryTest.Config.class,
         TestPersistenceConfig.class
 })
-@RunWith(SpringJUnit4ClassRunner.class)
+@RunWith(SpringRunner.class)
 @Transactional
 public class DefaultFileMetaDataRepositoryTest {
     @Autowired

@@ -21,14 +21,6 @@ public class BaseDefaultRepository<T> implements BaseRepository<T> {
                 .getGenericSuperclass()).getActualTypeArguments()[0];
     }
 
-    protected Criteria createCriteria(Class<?> clazz) {
-        return this.createCriteria(clazz, null);
-    }
-
-    protected Criteria createCriteria(Class<?> clazz, String alias) {
-        return this.sessionFactory.getCurrentSession().createCriteria(clazz, alias);
-    }
-
     public void save(T entity) {
         this.sessionFactory.getCurrentSession().saveOrUpdate(entity);
     }

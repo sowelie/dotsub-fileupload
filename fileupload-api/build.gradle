@@ -30,6 +30,10 @@ repositories {
 	mavenCentral()
 }
 
+configurations {
+	dev
+}
+
 dependencies {
 	compile	"org.springframework.boot:spring-boot-starter-web",
 			"org.springframework:spring-orm:$springVersion",
@@ -41,3 +45,13 @@ dependencies {
 
 	testCompile 'org.springframework.boot:spring-boot-starter-test'
 }
+
+// run spring boot app
+bootRun {
+	//addResources = true
+	classpath = sourceSets.main.runtimeClasspath + configurations.dev
+}
+
+// run all task
+task runAll {}
+runAll.dependsOn(bootRun)

@@ -1,2 +1,3 @@
 rootProject.name = 'fileupload'
 include 'fileupload-api'
+include 'fileupload-web'

@@ -1,14 +1,6 @@
-group 'us.pinette'
-version '1.0-SNAPSHOT'
+// root build.gradle
 
-apply plugin: 'java'
-
-sourceCompatibility = 1.5
-
-repositories {
-    mavenCentral()
-}
-
-dependencies {
-    testCompile group: 'junit', name: 'junit', version: '4.11'
+// gradle wrapper
+task wrapper(type: Wrapper) {
+    gradleVersion = '3.2'
 }

@@ -10,11 +10,11 @@ import us.pinette.fileupload.api.models.FileMetaDataModel;
 import us.pinette.fileupload.api.repositories.FileMetaDataRepository;
 import us.pinette.fileupload.api.services.FileStorageService;
 
+import java.io.IOException;
 import java.io.InputStream;
+import java.io.OutputStream;
 import java.nio.file.Files;
-import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.nio.file.StandardCopyOption;
 import java.util.List;
 
 /**
@@ -75,6 +75,16 @@ public class LocalFileStorageService implements FileStorageService {
     @Override
     public List<FileMetaData> getAll() {
         return metaDataRepository.getAll();
+    }
+
+    @Override
+    public FileMetaData get(long id) {
+        return metaDataRepository.get(id);
+    }
+
+    @Override
+    public void streamFile(FileMetaData metaData, OutputStream output) throws IOException {
+        Files.copy(Paths.get(storageDirectory, metaData.getFileName()), output);
     }
 
     private String cleanFileName(final String input) {
